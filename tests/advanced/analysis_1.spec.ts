@@ -199,7 +199,7 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
 
 
 
-test('Analysis 업로드 실패 동작 확인인', async ({ page }) => {
+test('42072 STS_Analysis_Request Failed', async ({ page }) => {
 
   await page.goto('http://192.168.0.190/analysis');
 
