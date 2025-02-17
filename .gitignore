@@ -1,0 +1,21 @@
+# Node.js 관련 파일
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Playwright 결과 파일
+test-results/
+playwright-report/
+*.zip
+
+# 환경 설정 파일
+.env
+*.local
+Thumbs.db  # Windows에서 생성되는 파일
+
+# 로그 파일
+logs/
+*.log
+
+# Git 관련 파일
+.gitignore
