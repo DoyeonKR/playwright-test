@@ -1,0 +1,363 @@
+{
+  "config": {
+    "configFile": "D:\\playwrightexample\\playwright.config.ts",
+    "rootDir": "D:/playwrightexample/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": "D:\\playwrightexample\\tests\\global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\playwrightexample\\test-results\\test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/playwrightexample/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Admin Tests",
+        "name": "Admin Tests",
+        "testDir": "D:/playwrightexample/tests/Admin",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/playwrightexample/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Advanced User Tests",
+        "name": "Advanced User Tests",
+        "testDir": "D:/playwrightexample/tests/advanced",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.50.1",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run start",
+      "url": "http://192.168.0.190",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "Admin\\analysis.spec.ts",
+      "file": "Admin/analysis.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "DICOM Tag 생성/삭제 테스트",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Admin Tests",
+              "projectName": "Admin Tests",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5595,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🔹 Logging out user: master\n"
+                    },
+                    {
+                      "text": "✅ Successfully logged out (master)\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-17T05:46:47.356Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\playwrightexample\\test-results\\analysis-DICOM-Tag-생성-삭제-테스트-Admin-Tests\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b34bd8d1c37d1e9436ab-275a51849f059f716263",
+          "file": "Admin/analysis.spec.ts",
+          "line": 49,
+          "column": 5
+        },
+        {
+          "title": "User 필터 테스트",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Admin Tests",
+              "projectName": "Admin Tests",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4304,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🔹 Logging out user: master\n"
+                    },
+                    {
+                      "text": "✅ Successfully logged out (master)\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-17T05:46:53.326Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\playwrightexample\\test-results\\analysis-User-필터-테스트-Admin-Tests\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b34bd8d1c37d1e9436ab-3c423e8e3b8e1d36f600",
+          "file": "Admin/analysis.spec.ts",
+          "line": 91,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "advanced\\analysis_1.spec.ts",
+      "file": "advanced/analysis_1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "42048\tSTS_Analysis_UI",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Advanced User Tests",
+              "projectName": "Advanced User Tests",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 4664,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🔹 Logging out user: test1\n"
+                    },
+                    {
+                      "text": "✅ Successfully logged out (test1)\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Check the analysis list title",
+                      "duration": 242
+                    },
+                    {
+                      "title": "Check the number of listings by analysis status",
+                      "duration": 69
+                    },
+                    {
+                      "title": "Check the analysis list",
+                      "duration": 164
+                    }
+                  ],
+                  "startTime": "2025-02-17T05:46:47.357Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\playwrightexample\\test-results\\analysis_1-42048-STS-Analysis-UI-Advanced-User-Tests\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "042e88f1fd15b09e651b-14255dff6deaea982267",
+          "file": "advanced/analysis_1.spec.ts",
+          "line": 49,
+          "column": 5
+        },
+        {
+          "title": "42060 STS_Analysis_Search/Filter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Advanced User Tests",
+              "projectName": "Advanced User Tests",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 4708,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🔹 Logging out user: test1\n"
+                    },
+                    {
+                      "text": "✅ Successfully logged out (test1)\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Enter searchable text for \"Patient ID or Patient Name\"<i> > Select [Search]",
+                      "duration": 112
+                    },
+                    {
+                      "title": "Select Sex <d>",
+                      "duration": 110
+                    },
+                    {
+                      "title": "Select Analysis Type <d>",
+                      "duration": 189
+                    },
+                    {
+                      "title": "Select Analysis Status <d>",
+                      "duration": 134
+                    },
+                    {
+                      "title": "Select Image Type <d>",
+                      "duration": 169
+                    },
+                    {
+                      "title": "Select Analysis Requested <d>",
+                      "duration": 108
+                    }
+                  ],
+                  "startTime": "2025-02-17T05:46:52.295Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\playwrightexample\\test-results\\analysis_1-42060-STS-Analysis-Search-Filter-Advanced-User-Tests\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "042e88f1fd15b09e651b-4f202afd249f84509dd5",
+          "file": "advanced/analysis_1.spec.ts",
+          "line": 129,
+          "column": 5
+        },
+        {
+          "title": "Analysis 업로드 실패 동작 확인인",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Advanced User Tests",
+              "projectName": "Advanced User Tests",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 6174,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🔹 Logging out user: test1\n"
+                    },
+                    {
+                      "text": "✅ Successfully logged out (test1)\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-17T05:46:57.318Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\playwrightexample\\test-results\\analysis_1-Analysis-업로드-실패-동작-확인인-Advanced-User-Tests\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "042e88f1fd15b09e651b-8925cb9fa2001af5c7e3",
+          "file": "advanced/analysis_1.spec.ts",
+          "line": 202,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-02-17T05:46:45.961Z",
+    "duration": 17885.461,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

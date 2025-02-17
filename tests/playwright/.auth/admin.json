@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://192.168.0.190",
+      "localStorage": [
+        {
+          "name": "persist:auth",
+          "value": "{\"isUserAuthorized\":\"false\",\"department\":\"\\\"\\\"\",\"userName\":\"\\\"\\\"\",\"userId\":\"\\\"\\\"\",\"timeZone\":\"\\\"UTC\\\"\",\"permissionProfileName\":\"\\\"\\\"\",\"permissions\":\"[]\",\"id\":\"\\\"\\\"\",\"grantType\":\"\\\"Bearer\\\"\",\"token\":\"\\\"\\\"\",\"expiredAt\":\"\\\"\\\"\",\"expiredMillis\":\"0\",\"accessToken\":\"{\\\"grantType\\\":\\\"Bearer\\\",\\\"token\\\":\\\"\\\",\\\"expiredAt\\\":\\\"\\\",\\\"expiredMillis\\\":0,\\\"userId\\\":0,\\\"loginId\\\":\\\"\\\",\\\"userName\\\":\\\"\\\",\\\"permissionProfileName\\\":\\\"User\\\",\\\"permissions\\\":[{\\\"name\\\":\\\"\\\",\\\"permissionGroup\\\":\\\"\\\",\\\"apis\\\":[{\\\"method\\\":\\\"\\\",\\\"pattern\\\":\\\"\\\"}]}],\\\"refreshASAP\\\":true}\",\"tokenIssueTime\":\"\\\"\\\"\",\"_persist\":\"{\\\"version\\\":-1,\\\"rehydrated\\\":true}\"}"
+        }
+      ]
+    }
+  ]
+}
