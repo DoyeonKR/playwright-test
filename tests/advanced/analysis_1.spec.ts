@@ -339,6 +339,8 @@ test('Analysis 업로드 실패 동작 확인인', async ({ page }) => {
 
 test ('42070 STS_General_Software Infromation_Product information', async ({ page }) => {
 
+  await page.goto('http://192.168.0.190/patient');
+
   await test.step('Check the product information', async () => {
     /* [If there is regulatory information]
 
@@ -356,7 +358,3 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
 
 
 });
-
-
-
-
