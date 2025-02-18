@@ -363,9 +363,8 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
       await page.getByRole('button', { name: 'Upload DICOM Images' }).click();
   
       /*
-      아래는 정상적인 다이콤 이미지 - 추후 프로젝트 안에 경로를 넣어 로컬에서 파일 넣지 않는 것으로 대체 하여야함함
+      아래는 .setInputFiles('D:\\PyCharm 2024.1.4\\bin\\aarch64'); path 에 1GB 이상 DICOM 이미지를 폴더를 지정 해주세요.
       **/
-      // await page.locator('#manual-upload-input').setInputFiles('D:\\T1&FLAIR\\T1&FLAIR\\sub_0020_20170427\\t1\\new');
   
       await page.locator('#manual-upload-input').setInputFiles('D:\\PyCharm 2024.1.4\\bin\\aarch64');
       await expect(page.locator('#manual-upload-input-delete')).toBeVisible();

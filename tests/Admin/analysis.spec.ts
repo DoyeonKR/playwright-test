@@ -32,17 +32,9 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.afterEach(async ({ page }) => {
-  if (loggedInUser) {
-    console.log(`🔹 Logging out user: ${loggedInUser}`);
-    try {
-      await page.goto('http://192.168.0.190'); 
-      await page.getByRole('button', { name: loggedInUser }).click();
-      await page.getByRole('button', { name: 'Log Out' }).click();
-      console.log(`✅ Successfully logged out (${loggedInUser})`);
-    } catch (error) {
-      console.warn(`⚠️ Could not log out user (${loggedInUser})`, error);
-    }
-  }
+  
+  await page.close();
+
 });
 
 
@@ -88,19 +80,80 @@ test('DICOM Tag 생성/삭제 테스트', async ({ page }) => {
   
   });
 
-  test('User 필터 테스트', async ({ page }) => {
+  test('42232 STS_Setting_User_UI', async ({ page }) => {
 
     await page.goto('http://192.168.0.190/administration/user');  
 
-    await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
-    await expect(page.locator('#user-list-left').getByRole('list').getByRole('button').filter({ hasText: /^$/ })).toBeVisible();
-    await expect(page.locator('#common-user-multiselection-status').getByRole('textbox')).toBeVisible();
-    await expect(page.locator('#common-user-multiselection-permission').getByRole('textbox')).toBeVisible();
-    await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeEmpty();
-    await page.getByRole('textbox', { name: 'Enter user ID or user name' }).click();
-    await page.getByRole('textbox', { name: 'Enter user ID or user name' }).fill('test');
-    await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
-    await page.getByRole('button', { name: 'Reset' }).click();
-    await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
+    test.step('Administration > Select the " User" Tap', async () => {
+
+      await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
+      await expect(page.locator('#user-list-left').getByRole('list').getByRole('button').filter({ hasText: /^$/ })).toBeVisible();
+      await expect(page.locator('#common-user-multiselection-status').getByRole('textbox')).toBeVisible();
+      await expect(page.locator('#common-user-multiselection-permission').getByRole('textbox')).toBeVisible();
+      await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeEmpty();
+      await page.getByRole('textbox', { name: 'Enter user ID or user name' }).click();
+      await page.getByRole('textbox', { name: 'Enter user ID or user name' }).fill('test');
+      await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
+      await page.getByRole('button', { name: 'Reset' }).click();
+      await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
+
+    });
 
 });
+
+test('42233 STS_Setting_User_Create_UI', async ({ page }) => {
+
+  await page.goto('http://192.168.0.190/administration/user');  
+
+  //Select the [+Create]
+    
+    /*
+
+      Verify that the popup is displayed
+
+        - Title : Create User
+        - User ID* <i> l [Check Duplicates]
+        - Password* <i>
+        └ Password must be 8-20 characters long and contain English alphabet letters, numbers and special characters.
+        - Confirm Password* <i>
+        - User Name* <i>
+        - Permission Profile* <d>
+        - Status*
+        └ Active (Default) / Inactive
+        - Department <i>
+        - Memo <i>
+        └ Enter the required comment. You can enter up to 256 characters. 
+        - [Cancel]  (Default : Enabled)
+        - [Save] (Default : Disabled)
+
+    **/
+
+    await page.getByRole('button', { name: 'Create' }).click();
+
+    await page.waitForTimeout(1000);
+
+    await expect(page.locator('#common-user-modal-add-user-textfield-userId')).toBeVisible();
+    await expect(page.locator('#common-user-modal-add-user-textfield-password')).toBeVisible();
+    await expect(page.getByText('Password must be 8-20')).toBeVisible();
+    await expect(page.locator('#common-user-modal-add-user-textfield-confirmPassword')).toBeVisible();
+    await expect(page.locator('#common-user-modal-add-user-textfield-userName')).toBeVisible();
+    await expect(page.locator('#common-user-modal-add-user-textfield-userName')).toBeVisible();
+    await expect(page.locator('#common-user-modal-add-user-combobox-permissionProfile')).toBeVisible();
+    await expect(page.getByTitle('Active', { exact: true })).toBeVisible();
+    await expect(page.getByText('Inactive', { exact: true })).toBeVisible();
+    await expect(page.locator('#common-user-modal-add-user-textfield-department')).toBeVisible();
+    await expect(page.getByRole('textbox', { name: 'Enter the required comment.' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Cancel' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Save' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Check Duplicate' })).toBeVisible();
+
+    await page.waitForTimeout(1000);
+
+    await page.getByRole('button', { name: 'Cancel' }).click();
+
+
+});
+
+
+
+
