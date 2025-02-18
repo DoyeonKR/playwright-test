@@ -19,3 +19,4 @@ logs/
 
 # Git 관련 파일
 .gitignore
+playwright/.auth/site_manager.json
