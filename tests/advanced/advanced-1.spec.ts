@@ -130,14 +130,13 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
 
   await page.goto('http://192.168.0.190/analysis');
 
-  await test.step('Enter searchable text for "Patient ID or Patient Name"<i> > Select [Search]', async () => {
+  await page.waitForLoadState('networkidle');
+
 
     await page.getByRole('textbox', { name: 'Patient ID or Patient Name' }).click();
     await page.getByRole('textbox', { name: 'Patient ID or Patient Name' }).fill('test');
 
-  });
 
-  await test.step('Select Sex <d>', async () => {
 
     await page.waitForSelector('#patient-sex-filter');
     await page.locator('#patient-sex-filter').getByRole('textbox').click();
@@ -147,10 +146,6 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
     await expect(page.getByText('Unknown', { exact: true })).toBeVisible();
 
 
-  });
-
-  await test.step('Select Analysis Type <d>', async () => {    
-
     await page.getByRole('listitem').filter({ hasText: 'Analysis Type' }).getByRole('textbox').click();
     await expect(page.getByText('AD Biomarker', { exact: true })).toBeVisible();
     await expect(page.getByText('Tau PET', { exact: true })).toBeVisible();
@@ -158,9 +153,6 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
     await expect(page.getByText('Brain Volumetry', { exact: true })).toBeVisible();  
 
 
-  });
-
-  await test.step('Select Analysis Status <d>', async () => {
 
   await page.getByRole('listitem').filter({ hasText: 'Analysis Status' }).getByRole('textbox').click();
   await expect(page.getByText('All', { exact: true })).toBeVisible();
@@ -169,10 +161,6 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
   await expect(page.getByText('Canceled', { exact: true })).toBeVisible();
   await expect(page.getByText('Pending', { exact: true })).toBeVisible();
 
-
-  });
-
-  await test.step('Select Image Type <d>', async () => {
 
     await page.getByRole('listitem').filter({ hasText: 'Image Type' }).getByRole('textbox').click();
     await expect(page.getByText('All', { exact: true })).toBeVisible();
@@ -183,21 +171,14 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
     await expect(page.getByText('Amyloid PET', { exact: true })).toBeVisible();
     await expect(page.getByText('Tau PET', { exact: true })).toBeVisible();
 
-  });
-
-  await test.step('Select Analysis Requested <d>', async () => {
-
     await page.getByRole('textbox', { name: 'All' }).click();
     await expect(page.locator('#range-date-picker')).toBeVisible();
     await expect(page.locator('#textinput-popover').getByRole('button', { name: 'Reset' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Search' })).toBeVisible();
 
-  });
+
 
 });
-
-
-
 
 test('42072 STS_Analysis_Request Failed', async ({ page }) => {
 
@@ -341,7 +322,6 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
 
   await page.goto('http://192.168.0.190/patient');
 
-  await test.step('Check the product information', async () => {
     /* [If there is regulatory information]
 
     Research Mode On > Select the [About] icon in the upper right corner
@@ -379,4 +359,3 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
   });
 
 
-});
