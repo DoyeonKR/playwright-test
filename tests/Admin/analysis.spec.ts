@@ -154,6 +154,59 @@ test('42233 STS_Setting_User_Create_UI', async ({ page }) => {
 
 });
 
+test ('42204-1 STS_Setting_Connectivity_UI', async ({ page }) => {
+
+  await page.goto('http://192.168.0.190/administration/connectivity');
+
+  await expect(page.getByText('DICOM Receiver', { exact: true })).toBeVisible();
+  await expect(page.getByText('DICOM Receiver is not running')).toBeVisible();
+  await expect(page.getByText('Stopped')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
+
+});
+
+
+test ('42204-2 STS_Setting_Connectivity_UI', async ({ page }) => {
+
+  await page.goto('http://192.168.0.190/administration/connectivity');
+
+  await expect(page.getByText('Result Archiving Server')).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Service Name' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Host Name/IP' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Port No.' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'AE Title' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Transaction Timeout (sec)' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Automatic Start' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'TLS' })).toBeVisible();
+
+});
+
+
+
+test ('42204-3 STS_Setting_Connectivity_UI', async ({ page }) => {
+
+
+  await page.goto('http://192.168.0.190/administration/connectivity');
+
+  await expect(page.getByText('Result Archiving Server')).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Service Name' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Host Name/IP' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Port No.' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'AE Title' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Transaction Timeout (sec)' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Automatic Start' })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'TLS' })).toBeVisible();
+});
+
+
+test ('42204-4 STS_Setting_Connectivity_UI', async ({ page }) => {
+
+  await page.goto('http://192.168.0.190/administration/connectivity');
+
+  await expect(page.getByRole('row', { name: 'AQUAAD localhost 104 AQUAAD' }).getByRole('button')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Setting' }).nth(1)).toBeVisible();
+  await expect(page.getByRole('row', { name: 'localhost ORTHANC_SCP 4242' }).getByRole('button').nth(1)).toBeVisible();
+});
 
 
 
