@@ -7,7 +7,7 @@ const siteManagerFile = 'playwright/.auth/site_manager.json';
 let loggedInUser = '';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://192.168.0.190/login');  
+  await page.goto('/login');  
   await page.getByRole('textbox', { name: 'User ID' }).click();
   loggedInUser = 'master';
   await page.getByRole('textbox', { name: 'User ID' }).fill(loggedInUser);
@@ -28,7 +28,7 @@ test.beforeEach(async ({ page }) => {
 
   await page.waitForTimeout(1000);
 
-  await page.goto('http://192.168.0.190/administration/analysis');
+  await page.goto('/administration/analysis');
   
 });
 
@@ -83,8 +83,8 @@ test('DICOM Tag 생성/삭제 테스트', async ({ page }) => {
 
   test('42232 STS_Setting_User_UI', async ({ page }) => {
 
-    await page.goto('http://192.168.0.190/administration/user');  
-    
+    await page.goto('/administration/user');  
+
       await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
       await expect(page.locator('#user-list-left').getByRole('list').getByRole('button').filter({ hasText: /^$/ })).toBeVisible();
       await expect(page.locator('#common-user-multiselection-status').getByRole('textbox')).toBeVisible();
@@ -100,7 +100,7 @@ test('DICOM Tag 생성/삭제 테스트', async ({ page }) => {
 
 test('42233 STS_Setting_User_Create_UI', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/administration/user');  
+  await page.goto('/administration/user');  
 
   //Select the [+Create]
     
@@ -153,7 +153,7 @@ test('42233 STS_Setting_User_Create_UI', async ({ page }) => {
 
 test ('42204-1 STS_Setting_Connectivity_UI', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/administration/connectivity');
+  await page.goto('/administration/connectivity');
 
   await expect(page.getByText('DICOM Receiver', { exact: true })).toBeVisible();
   await expect(page.getByText('DICOM Receiver is not running')).toBeVisible();
@@ -165,7 +165,7 @@ test ('42204-1 STS_Setting_Connectivity_UI', async ({ page }) => {
 
 test ('42204-2 STS_Setting_Connectivity_UI', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/administration/connectivity');
+  await page.goto('/administration/connectivity');
 
   await expect(page.getByText('Result Archiving Server')).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Service Name' })).toBeVisible();
@@ -183,7 +183,7 @@ test ('42204-2 STS_Setting_Connectivity_UI', async ({ page }) => {
 test ('42204-3 STS_Setting_Connectivity_UI', async ({ page }) => {
 
 
-  await page.goto('http://192.168.0.190/administration/connectivity');
+  await page.goto('/administration/connectivity');
 
   await expect(page.getByText('Result Archiving Server')).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Service Name' })).toBeVisible();
@@ -198,7 +198,7 @@ test ('42204-3 STS_Setting_Connectivity_UI', async ({ page }) => {
 
 test ('42204-4 STS_Setting_Connectivity_UI', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/administration/connectivity');
+  await page.goto('/administration/connectivity');
 
   await expect(page.getByRole('row', { name: 'AQUAAD localhost 104 AQUAAD' }).getByRole('button')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Setting' }).nth(1)).toBeVisible();
@@ -207,7 +207,7 @@ test ('42204-4 STS_Setting_Connectivity_UI', async ({ page }) => {
 
 test ('42205-42206 STS_Setting_Connectivity_Start/Stop', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/administration/connectivity');
+  await page.goto('/administration/connectivity');
 
   //버튼이 가끔 안눌려서 눌려질때까지 반복 하도록 하는 함수 추가 
   while (!(await page.getByText('Running', { exact: true }).isVisible())) {
@@ -224,7 +224,7 @@ test ('42205-42206 STS_Setting_Connectivity_Start/Stop', async ({ page }) => {
 
 test ('42208 STS_Setting_Connectivity_Receiver Server Settings_UI', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/administration/connectivity');
+  await page.goto('/administration/connectivity');
 
   await page.getByRole('row', { name: 'AQUAAD localhost 104 AQUAAD' }).getByRole('button').click();
 

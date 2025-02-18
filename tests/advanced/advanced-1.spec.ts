@@ -6,7 +6,7 @@ const siteManagerFile = 'playwright/.auth/site_manager.json';
 let loggedInUser = '';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://192.168.0.190/login');  
+  await page.goto('/login');  
   await page.getByRole('textbox', { name: 'User ID' }).click();
   loggedInUser = 'test1';
   await page.getByRole('textbox', { name: 'User ID' }).fill(loggedInUser);
@@ -27,7 +27,7 @@ test.beforeEach(async ({ page }) => {
 
   await page.waitForTimeout(1000);
 
-  await page.goto('http://192.168.0.190/analysis');
+  await page.goto('/analysis');
   
 });
 
@@ -40,7 +40,7 @@ test.afterEach(async ({ page }) => {
 
 test('42048	STS_Analysis_UI', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/analysis'); 
+  await page.goto('/analysis'); 
   
     await test.step('Check the analysis list title', async () => {
 
@@ -120,7 +120,7 @@ test('42048	STS_Analysis_UI', async ({ page }) => {
 
 test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/analysis');
+  await page.goto('/analysis');
 
   await page.waitForLoadState('networkidle');
 
@@ -174,7 +174,7 @@ test('42060 STS_Analysis_Search/Filter', async ({ page }) => {
 
 test('42072 STS_Analysis_Request Failed', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/analysis');
+  await page.goto('/analysis');
 
     await page.getByRole('button', { name: 'Upload DICOM Images' }).click();
 
@@ -312,7 +312,7 @@ test('42072 STS_Analysis_Request Failed', async ({ page }) => {
 
 test ('42070 STS_General_Software Infromation_Product information', async ({ page }) => {
 
-  await page.goto('http://192.168.0.190/patient');
+  await page.goto('/patient');
 
     /* [If there is regulatory information]
 
@@ -330,7 +330,7 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
 
   test('42073 STS_Analysis_File Size Exceeded', async ({ page }) => {
 
-    await page.goto('http://192.168.0.190/analysis');
+    await page.goto('/analysis');
   
       await page.getByRole('button', { name: 'Upload DICOM Images' }).click();
   
@@ -347,6 +347,14 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
       await page.getByRole('button', { name: 'Cancel' }).click();
   
       await page.waitForTimeout(1000);
+  
+  });
+
+  test('42050 STS_Patient_UI', async ({ page }) => {
+
+    await page.goto('/patient');
+  
+    
   
   });
 
