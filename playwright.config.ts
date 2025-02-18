@@ -14,7 +14,9 @@ export default defineConfig({
   outputDir: path.join(__dirname, 'test-results'),  // ✅ 결과 저장 경로
 
   reporter: [
+    ['list'],  // ✅ 리스트 리포트
     ['json', { outputFile: path.join(__dirname, 'test-results', 'test-results.json') }],  // ✅ JSON 리포트 자동 저장
+    ['html', {open: 'never'}]
   ],
 
   use: {
