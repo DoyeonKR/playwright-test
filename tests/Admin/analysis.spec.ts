@@ -84,9 +84,7 @@ test('DICOM Tag 생성/삭제 테스트', async ({ page }) => {
   test('42232 STS_Setting_User_UI', async ({ page }) => {
 
     await page.goto('http://192.168.0.190/administration/user');  
-
-    test.step('Administration > Select the " User" Tap', async () => {
-
+    
       await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
       await expect(page.locator('#user-list-left').getByRole('list').getByRole('button').filter({ hasText: /^$/ })).toBeVisible();
       await expect(page.locator('#common-user-multiselection-status').getByRole('textbox')).toBeVisible();
@@ -97,8 +95,6 @@ test('DICOM Tag 생성/삭제 테스트', async ({ page }) => {
       await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
       await page.getByRole('button', { name: 'Reset' }).click();
       await expect(page.getByRole('textbox', { name: 'Enter user ID or user name' })).toBeVisible();
-
-    });
 
 });
 
@@ -209,7 +205,7 @@ test ('42204-4 STS_Setting_Connectivity_UI', async ({ page }) => {
   await expect(page.getByRole('row', { name: 'localhost ORTHANC_SCP 4242' }).getByRole('button').nth(1)).toBeVisible();
 });
 
-test ('42205 STS_Setting_Connectivity_Start', async ({ page }) => {
+test ('42205-42206 STS_Setting_Connectivity_Start/Stop', async ({ page }) => {
 
   await page.goto('http://192.168.0.190/administration/connectivity');
 
@@ -225,6 +221,27 @@ test ('42205 STS_Setting_Connectivity_Start', async ({ page }) => {
   await expect(page.getByText('DICOM Receiver is not running')).toBeVisible();
 
 });
+
+test ('42208 STS_Setting_Connectivity_Receiver Server Settings_UI', async ({ page }) => {
+
+  await page.goto('http://192.168.0.190/administration/connectivity');
+
+  await page.getByRole('row', { name: 'AQUAAD localhost 104 AQUAAD' }).getByRole('button').click();
+
+  await expect(page.locator('#connectivity-modal-listener').getByText('Service Name')).toBeVisible();
+  await expect(page.getByText('Host Name/IP*')).toBeVisible();
+  await expect(page.getByText('Port No.*')).toBeVisible();
+  await expect(page.getByText('AE Title*')).toBeVisible();
+  await expect(page.getByText('Transaction Timeout*')).toBeVisible();
+  await expect(page.locator('#connectivity-modal-listener').getByText('Automatic Start')).toBeVisible();
+  await expect(page.getByText('Transport Layer Security (TLS)')).toBeVisible();
+  await expect(page.getByText('Mutual Authentication')).toBeVisible();
+
+});
+
+
+
+
 
 
 
