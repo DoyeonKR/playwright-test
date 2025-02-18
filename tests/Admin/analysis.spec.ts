@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { time } from 'console';
 test.describe.configure({ mode: 'serial' });
 
 const siteManagerFile = 'playwright/.auth/site_manager.json';
@@ -206,6 +207,23 @@ test ('42204-4 STS_Setting_Connectivity_UI', async ({ page }) => {
   await expect(page.getByRole('row', { name: 'AQUAAD localhost 104 AQUAAD' }).getByRole('button')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Setting' }).nth(1)).toBeVisible();
   await expect(page.getByRole('row', { name: 'localhost ORTHANC_SCP 4242' }).getByRole('button').nth(1)).toBeVisible();
+});
+
+test ('42205 STS_Setting_Connectivity_Start', async ({ page }) => {
+
+  await page.goto('http://192.168.0.190/administration/connectivity');
+
+  //버튼이 가끔 안눌려서 눌려질때까지 반복 하도록 하는 함수 추가 
+  while (!(await page.getByText('Running', { exact: true }).isVisible())) {
+    await page.getByRole('button', { name: 'Start' }).click();
+    await page.waitForTimeout(1000);
+  }
+
+  await expect(page.getByText('DICOM Receiver is running. To')).toBeVisible();
+
+  await page.getByRole('button', { name: 'Stop' }).click();
+  await expect(page.getByText('DICOM Receiver is not running')).toBeVisible();
+
 });
 
 
