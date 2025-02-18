@@ -32,17 +32,9 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.afterEach(async ({ page }) => {
-  if (loggedInUser) {
-    console.log(`🔹 Logging out user: ${loggedInUser}`);
-    try {
-      await page.goto('http://192.168.0.190'); 
-      await page.getByRole('button', { name: loggedInUser }).click();
-      await page.getByRole('button', { name: 'Log Out' }).click();
-      console.log(`✅ Successfully logged out (${loggedInUser})`);
-    } catch (error) {
-      console.warn(`⚠️ Could not log out user (${loggedInUser})`, error);
-    }
-  }
+  
+  await page.close();
+
 });
 
 
