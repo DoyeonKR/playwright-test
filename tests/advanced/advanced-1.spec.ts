@@ -353,9 +353,46 @@ test ('42070 STS_General_Software Infromation_Product information', async ({ pag
   test('42050 STS_Patient_UI', async ({ page }) => {
 
     await page.goto('/patient');
-  
-    
-  
+
+    await test.step('Check the Patient List', async () => {
+
+  });
+    await test.step('Research Mode Off > Check the Patient List', async () => {
+      await expect(page.getByRole('button', { name: 'Patient ID' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Patient Name' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Sex' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Date of Birth (Age)' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Centiloid Scale' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Max. Diameter (ARIA-E)' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'No. of Microhemorrhage' })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Medication', exact: true })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Started Medication' })).toBeVisible();
+
+   });
   });
 
+  test('42053 STS_Patient_Search_UI', async ({ page }) => {
+      
+      await page.goto('/patient');
+  
+      await test.step('Check the default value in the search bar', async () => {
+
+        await expect(page.getByRole('textbox', { name: 'Patient ID or Patient Name' })).toBeVisible();
+        await expect(page.locator('header').getByRole('listitem').filter({ hasText: /^$/ }).getByRole('button')).toBeVisible();
+        await expect(page.locator('#patient-sex-filter').getByRole('textbox')).toBeVisible();
+        await expect(page.getByRole('textbox', { name: 'All' })).toBeVisible();
+  
+      });
+
+      await test.step('Select the "Sex" Filter', async () => {
+
+        await page.locator('#patient-sex-filter').getByRole('textbox').click({ timeout: 30000 });     
+          await expect(page.getByText('All', { exact: true })).toBeVisible();
+          await expect(page.getByText('Male', { exact: true })).toBeVisible();
+          await expect(page.getByText('Female', { exact: true })).toBeVisible();
+          await expect(page.getByText('Unknown', { exact: true })).toBeVisible();
+  
+    });
+
+  });
 
