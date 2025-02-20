@@ -4,6 +4,7 @@
 
 - **Before/After 로그인 시 첫 로그인 실행 후 스토리지로 처리하여 로그인 동작 스킵**
   - Playwright의 `storageState` 기능을 활용하여 로그인 상태를 저장하고, 이후 테스트에서 이를 재사용하여 로그인 과정을 생략한다
+  - DB connection 하여 table 삭제 등으로 빠르게 모든 data 삭제... after Each 적용 방안 마련....
 
 ## 2. 디렉토리 구조 설계
 
